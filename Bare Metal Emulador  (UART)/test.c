@@ -8,7 +8,7 @@ const int WDIR[] = {-1, 0, 1, -1, 1, -1, 0, 1};
 
 char T[2][H+2][W+2];
 
-void clearDeMentirita();
+void clear();
 void printTablero(int);
 
 typedef volatile struct {
@@ -36,14 +36,12 @@ enum {
 };
  
 pl011_T * const UART0 = (pl011_T *)0x101f1000;
-pl011_T * const UART1 = (pl011_T *)0x101f2000;
-pl011_T * const UART2 = (pl011_T *)0x101f3000;
 
 static void uart_puts(pl011_T *uart, char *s){
-	while(*s != '\0') { /* Loop until end of string */
- uart->DR = (unsigned int)(*s); /* Transmit char */
- s++; /* Next char */
- }
+	while(*s != '\0') {
+		uart->DR = (unsigned int)(*s);
+		s++;
+	}
 }
 
 static void uart_gets(pl011_T *uart, char *s){
@@ -51,8 +49,11 @@ static void uart_gets(pl011_T *uart, char *s){
 	int lineend = 0;
 	char c;
 	while(!lineend){
+		//Entra al if cuando el recieve FIFO no esta vacio
 		if ((uart->FR & RXFE) == 0) {
-			while(uart->FR & TXFF);
+			//Se queda esperando mientras el transmit FIFO este lleno
+			while(uart->FR & TXFF)
+				;
 			c  = uart->DR;
 			switch(c){
 				//Carriage return
@@ -176,14 +177,14 @@ void initTablero(){
 	ingresarTablero();
 }
 
-void clearDeMentirita(){
+void clear(){
 	int i;
 	for(i = 0; i < 10; ++i)
 		uart_puts(UART0, "\n");
 }
 
 void printTablero(int act){
-	clearDeMentirita();
+	clear();
 	
 	int i, j;
 	for(i = 1; i < H+1; ++i){
