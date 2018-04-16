@@ -62,12 +62,12 @@ void setCasilla(int x, int y, int R, int G, int B){
 			pix[(offsetY + i) * fbInfo.vWidth + (offsetX + j)] = RGB32(R,G,B);
 }
 
-
-void clearDeMentirita(){
+//Funcion implementada para testeo
+void clearTablero(){
 	int x, y;
 	for (x = 1; x < W+1; x++) 
-      for(y = 1; y < H+1; y++)
-		setCasilla(x, y, 0, 0, 0);
+     		for(y = 1; y < H+1; y++)
+			setCasilla(x, y, 0, 0, 0);
     
 }
 
@@ -130,7 +130,7 @@ void notmain(){
 	fbInfo.fb = 0;
 	fbInfo.fbSize = 0;
 	
-	//mailbox negocia el tamanio del framebuffer y esas yerbas
+	//mailbox negocia el tamanio del framebuffer,junto a otros parametros
 	writeMB0(&fbInfo, FRAMEBUFFER);
 
 	int x = readMB0(FRAMEBUFFER);
