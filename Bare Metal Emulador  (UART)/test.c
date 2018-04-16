@@ -93,18 +93,6 @@ static void uart_getint(pl011_T *uart, int* n){
 	}
 }
 
-/*
- * Press F to pay respects
-static void uart_getc(pl011_T *uart, char *c){
-	int read = 0;
-	while(!read){
-		if ((uart->FR & RXFE) == 0) {
-			while(uart->FR & TXFF);
-			*c  = uart->DR = uart->DR;
-			read = 1;	
-		}
-	}
-}*/
 
 static void uart_getc(pl011_T *uart, char *c){
 	char s[20];
