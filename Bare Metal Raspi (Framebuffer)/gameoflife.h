@@ -3,6 +3,7 @@
 #define H 108
 #define W 192
 
+//Estas coordenadas generan lo que se conoce como "pistola" dentro del juego. Genera de forma indefinida la estructura "nave"
 int coor[] = {
 				2, 6,
 				3, 6,
