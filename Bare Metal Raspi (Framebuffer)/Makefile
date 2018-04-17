@@ -2,12 +2,9 @@ ARMGNU ?= arm-none-eabi
 
 #arm-none-eabi
 
-AOPS = --warn --fatal-warnings 
 COPS = -Wall -O2 -nostdlib -nostartfiles -ffreestanding -mcpu=arm1176jzf-s -std=c99
 
-gcc : gameoflife.hex gameoflife.bin kernel.img
-
-all : gcc
+all : gameoflife.hex gameoflife.bin kernel.img
 
 clean :
 	rm -f *.o
