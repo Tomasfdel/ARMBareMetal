@@ -9,7 +9,7 @@ const int WDIR[] = {-1, 0, 1, -1, 1, -1, 0, 1};
 
 char T[2][H+2][W+2];
 
-void clearPantalla();
+void clearTablero();
 void printTablero(int);
 
 
@@ -73,14 +73,14 @@ void initTablero(){
 	ingresarTablero();
 }
 
-void clearPantalla(){
+void clearTablero(){
 	int i;
 	for(i = 0; i < 10; ++i)
 		putchar('\n');
 }
 
 void printTablero(int act){
-	clearPantalla();
+	clearTablero();
 	
 	int i, j;
 	for(i = 1; i < H+1; ++i){
