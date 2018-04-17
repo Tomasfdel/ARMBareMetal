@@ -12,8 +12,6 @@ static const uint32_t BUFF_ADDR_MASK = 0x40000000;
 
 static const uint32_t CHANNEL_MASK = 0xF;
 
-static const uint32_t COLOR_WHITE = 0x00FFFFFF;
-
 typedef enum {
   POWER_MANAGEMENT,
   FRAMEBUFFER,
