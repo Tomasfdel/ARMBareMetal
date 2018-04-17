@@ -4,11 +4,6 @@
 #include "mailbox.h"
 #define RGB32(red, green, blue) (red | (green << 8) | (blue << 16) | 0xFF000000)
 
-#define GPFSEL3 0x2020000C
-#define GPFSEL4 0x20200010
-#define GPSET1  0x20200020
-#define GPCLR1  0x2020002C
-
 uint32_t readMB0 (MB0_CHANNEL channel)
 {
   uint32_t response = 0; 
