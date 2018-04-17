@@ -7,7 +7,7 @@ COPS = -Wall -O2 -nostdlib -nostartfiles -ffreestanding -mcpu=arm1176jzf-s -std=
 
 gcc : gameoflife.hex gameoflife.bin kernel.img
 
-all : gcc clang
+all : gcc
 
 clean :
 	rm -f *.o
@@ -25,13 +25,9 @@ gameoflife.o : gameoflife.c
 
 gameoflife.elf : memmap vectors.o gameoflife.o 
 	$(ARMGNU)-ld vectors.o gameoflife.o -T memmap -o gameoflife.elf
-	$(ARMGNU)-objdump -D gameoflife.elf > gameoflife.list
 
 gameoflife.bin : gameoflife.elf
 	$(ARMGNU)-objcopy gameoflife.elf -O binary gameoflife.bin
-
-gameoflife.hex : gameoflife.elf
-	$(ARMGNU)-objcopy gameoflife.elf -O ihex gameoflife.hex
 	
 kernel.img : gameoflife.elf
 	$(ARMGNU)-objcopy gameoflife.elf -O binary kernel.img
