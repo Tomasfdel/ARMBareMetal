@@ -125,11 +125,10 @@ int main(){
 	
 	initTablero();
 	
-	int i;
 	int p = 0;
 	
 	
-	for(i=0; i<100; ++i){
+	for(;;){
 		evolTablero(p);
 		p = (p ^ 1) & 1;
 		printTablero(p);
