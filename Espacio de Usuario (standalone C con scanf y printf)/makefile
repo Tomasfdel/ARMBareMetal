@@ -1,4 +1,4 @@
-all: gameoflife	
+all: gameoflife
 
 clean :
 	rm -f *.o
@@ -10,4 +10,4 @@ clean :
 
 
 gameoflife: gameoflife.c
-	arm-none-eabi-gcc gameoflife.c -o gameoflife
+	arm-linux-gnueabi-gcc gameoflife.c -o gameoflife

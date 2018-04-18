@@ -4,7 +4,7 @@ ARMGNU ?= arm-none-eabi
 
 COPS = -Wall -O2 -nostdlib -nostartfiles -ffreestanding -mcpu=arm1176jzf-s -std=c99
 
-all : gameoflife.hex gameoflife.bin kernel.img
+all : gameoflife.bin kernel.img
 
 clean :
 	rm -f *.o
